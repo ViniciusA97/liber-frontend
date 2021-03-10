@@ -1,10 +1,12 @@
+import React, { Fragment } from 'react';
+import CadastroLivro from './pages/Livro/Cadastrar'
+import StyledGlobal from './components/styledGlobal'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-          TESTE
-      </header>
-    </div>
+    <Fragment>
+      <StyledGlobal/>
+      <CadastroLivro/>
+    </Fragment>
   );
 }
 
