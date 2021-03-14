@@ -6,7 +6,7 @@ import {Cadastro, Formulario, Input, Textarea} from './styled'
 
 import api from '../../../utils/api'
 
-function CadastroLivro() {
+function AlterarLivro() {
 
     const [file, setFile] = useState();
     const [preview, setPreview] = useState(null);
@@ -21,8 +21,8 @@ function CadastroLivro() {
     const onSubmit = data =>{
        console.log(data)
       var config = {
-        method: 'post',
-        url: '/livro/',
+        method: 'put',
+        url: '/livro',
         headers: { 
           'Content-Type': 'application/json'
         },
@@ -43,7 +43,7 @@ function CadastroLivro() {
       <Cadastro>
  
         <Formulario>
-          <h2> Cadastrar novo livro </h2>
+          <h2> Alterar livro </h2>
 
           <form onSubmit={handleSubmit(onSubmit)}>
             <Upload  onUpload={submitFile} file={file} preview={preview}  />
@@ -121,4 +121,4 @@ function CadastroLivro() {
     );
   }
   
-  export default CadastroLivro;
+  export default AlterarLivro;
