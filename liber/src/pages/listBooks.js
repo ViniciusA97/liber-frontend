@@ -13,7 +13,7 @@ export function ListBooks(){
             console.log(books);
         })
     }
-    
+    console.log(books);
     useEffect(() => {
         if(!carregou){
             searchBooks();
