@@ -9,7 +9,7 @@ export function DeleteBook(){
     const [clicou, setClicou] = useState(false);
     const [id, setID] = useState(0);
     function searchBooks(){
-        axios.get("http://localhost:8080/api/livro/8").then(response => {
+        axios.get("http://localhost:8080/api/livro/9").then(response => {
             setBooks(response.data)
         })
     }
@@ -22,7 +22,7 @@ export function DeleteBook(){
         }
     }
 
-    useEffect(() => {
+    useEffect(() => { 
         if(!carregou){
             searchBooks();
             setCarregou(true);
@@ -57,7 +57,6 @@ export function DeleteBook(){
             <div className={styles.delete}>
                 <button onClick={deleteBook}>deletar</button>
 
-                <button>editar</button>
                 <button>voltar</button>
             </div>
         </div>
