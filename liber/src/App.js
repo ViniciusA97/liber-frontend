@@ -5,7 +5,6 @@ function App() {
   return (
     <Fragment>
       <StyledGlobal/>
-      <AlterarLivro/>
     </Fragment>
   );
 }

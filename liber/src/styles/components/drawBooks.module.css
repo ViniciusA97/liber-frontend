@@ -1,0 +1,48 @@
+.drawBooks{  
+    background-color: #DCDCDC;
+    color: #4d432e;
+    width: 220px;
+    margin: 10px;
+    border-radius: 0.7rem;
+    padding: 10px;
+    display: block
+}
+
+.containerImage img{  
+    max-width: 200px;
+    height: 230px;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.drawBooks h1{
+    display: flex;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--title);
+    padding: 0.7rem 0 0;
+}
+
+.drawBooks h4{
+    text-align: center;
+    font-weight: 100;
+    font-size: 0.9rem;
+    color: var(--text);
+}
+.drawBooks div{
+    font-weight: 100;
+    font-size: 0.8rem;
+    flex: 1;
+    display: block;
+    text-align:center;
+}
+.drawBooks div div{
+    display: flex;
+    justify-content: center;
+}
+.drawBooks div div img{
+    width: 1rem;
+}
