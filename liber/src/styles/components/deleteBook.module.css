@@ -1,0 +1,33 @@
+.listBooks{
+    width: 900px;
+    margin: 0 auto;
+    justify-content: center;
+}
+.butao{
+    margin: 10px;
+}
+.listBooks div:last-child{
+    margin: 0 auto;
+    justify-content: center;
+}
+.delete{
+    text-align: center;
+}
+.delete button {
+    width: 15rem;
+    height: 4rem;
+    margin: 1rem;
+    text-decoration: none;
+    background-color: #FFFFF0;
+    border: 1px solid #FFFFF0;
+    border-radius: 20px;
+    outline:none;
+}
+.delete > button:hover:first-child{
+    background-color: var(--red);
+    border: 1px solid #eb8787;
+
+}
+.delete button:hover{
+    background-color: var(--blue-twitter);
+}
