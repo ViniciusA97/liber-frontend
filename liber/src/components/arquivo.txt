@@ -1,7 +1,0 @@
-Assets: são armazenados imagens, CSS e JavaScripts globais do projeto 
-Config: vão estar armazenadas as configurações no projeto: history, http, reducers, sagas
-Constants: armazena valores que são utilizados em vários lugares dos códigos
-Components: vai conter os components globais, exemplo: header, footer
-Util:  possui funções que serão reaproveitadas e utilizadas em várias partes dos códigos
-Environments: responsável por armazenar informações e configurações que diferenciam de um ambiente para o outro.
-Pages: estará o componente que será renderizado na tela, exemplo: home, login, cadastro
