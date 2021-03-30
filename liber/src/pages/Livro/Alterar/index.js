@@ -1,28 +1,31 @@
 
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import { useForm } from "react-hook-form";
 import Upload from '../../../components/Dropzone'
 import {Cadastro, Formulario, Input, Textarea} from './styled'
+import { useParams } from 'react-router';
 
 import api from '../../../utils/api'
 
-function CadastroLivro() {
+function AlterarLivro() {
 
+    //const {id} = this.props.match.params.id;
     const [file, setFile] = useState();
     const [preview, setPreview] = useState(null);
-    
+    const [loading, setLoading] = useState(false);
+
     function submitFile(files){
         setFile(files[0]);
         setPreview(URL.createObjectURL(files[0]));
     }
 
-    const { register, handleSubmit, watch, errors } = useForm();
+    const { register, handleSubmit, watch, errors, setValue } = useForm();
     
     const onSubmit = data =>{
        console.log(data)
       var config = {
-        method: 'post',
-        url: '/livro/',
+        method: 'put',
+        url: '/livro/edit/1',
         headers: { 
           'Content-Type': 'application/json'
         },
@@ -31,19 +34,52 @@ function CadastroLivro() {
 
       api(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
+        console.log(JSON.stringify(response.status));
       })
       .catch(function (error) {
         console.log(error);
       });
     
     }
+
+    async function get(){
+      var config = {
+          method: 'get',
+          url: '/livro/1',
+          headers: { }
+        };
+
+        api(config)
+        .then(function (response) {
+          var data = response.data;
+          console.log(data);
+          setValue('titulo', data.titulo)
+          setValue('autor', data.autor)
+          setValue('genero', data.genero)
+          setValue('paginas', data.paginas)
+          setValue('ano', data.ano)
+          setValue('edicao', data.edicao)
+          setValue('editora', data.editora)
+          setValue('ISBN', data.isbn)
+          setValue('sinopse', data.sinopse)
+          setLoading(true);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+  }
+
+  useEffect(() => {
+    if(!loading){ 
+        get()
+    }
+  });
   
     return (
       <Cadastro>
  
         <Formulario>
-          <h2> Cadastrar novo livro </h2>
+          <h2> Alterar livro </h2>
 
           <form onSubmit={handleSubmit(onSubmit)}>
             <Upload  onUpload={submitFile} file={file} preview={preview}  />
@@ -121,4 +157,4 @@ function CadastroLivro() {
     );
   }
   
-  export default CadastroLivro;
+  export default AlterarLivro;
