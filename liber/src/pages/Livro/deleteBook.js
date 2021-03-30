@@ -1,9 +1,9 @@
-import { DrawBook } from "../components/drawBook";
+import { DrawBook } from "../../components/drawBook";
 import axios from 'axios'
-import styles from "../styles/components/deleteBook.module.css"
+import styles from "../../styles/components/deleteBook.module.css"
 import { useEffect, useState } from "react";
 
-export function DeleteBook(){
+function DeleteBook(){
     const [books, setBooks] = useState(null);
     const [carregou, setCarregou] = useState(false);
     const [clicou, setClicou] = useState(false);
@@ -63,3 +63,4 @@ export function DeleteBook(){
     );
 }
 
+export default DeleteBook

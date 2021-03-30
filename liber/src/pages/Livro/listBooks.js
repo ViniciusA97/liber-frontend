@@ -1,9 +1,9 @@
-import { DrawBooks } from "../components/drawBooks";
+import { DrawBooks } from "../../components/drawBooks";
 import axios from 'axios'
-import styles from "../styles/components/listBooks.module.css"
+import styles from "../../styles/components/listBooks.module.css"
 import { useEffect, useState } from "react";
 
-export function ListBooks(){
+function ListBooks(){
     const [books, setBooks] = useState(null);
     const [carregou, setCarregou] = useState(false);
 
@@ -39,3 +39,4 @@ export function ListBooks(){
     );
 }
 
+export default ListBooks
