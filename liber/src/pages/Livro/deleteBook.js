@@ -2,12 +2,15 @@ import { DrawBook } from "../../components/drawBook";
 import axios from 'axios'
 import styles from "../../styles/components/deleteBook.module.css"
 import { useEffect, useState } from "react";
+import {useHistory} from 'react-router-dom'
 
 function DeleteBook(){
     const [books, setBooks] = useState(null);
     const [carregou, setCarregou] = useState(false);
     const [clicou, setClicou] = useState(false);
     const [id, setID] = useState(0);
+    let history = useHistory();
+
     function searchBooks(){
         axios.get("http://localhost:8080/api/livro/9").then(response => {
             setBooks(response.data)
@@ -20,6 +23,10 @@ function DeleteBook(){
             console.log(`Delete o livro do ID: ${books.id}`);
             setClicou(true);
         }
+    }
+
+    function voltar(){
+        history.push("/")
     }
 
     useEffect(() => { 
@@ -57,7 +64,7 @@ function DeleteBook(){
             <div className={styles.delete}>
                 <button onClick={deleteBook}>deletar</button>
 
-                <button>voltar</button>
+                <button onClick={voltar}>voltar</button>
             </div>
         </div>
     );
