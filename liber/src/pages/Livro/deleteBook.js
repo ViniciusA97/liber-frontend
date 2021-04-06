@@ -2,15 +2,26 @@ import { DrawBook } from "../../components/drawBook";
 import axios from 'axios'
 import styles from "../../styles/components/deleteBook.module.css"
 import { useEffect, useState } from "react";
+import { useParams,useHistory   } from "react-router-dom";
+import NotFoundPage from "../NotFoundPage";
 
 function DeleteBook(){
+    let { id } = useParams();
+    console.log(id)
+
     const [books, setBooks] = useState(null);
     const [carregou, setCarregou] = useState(false);
     const [clicou, setClicou] = useState(false);
-    const [id, setID] = useState(0);
+    const history = useHistory();
+
+
     function searchBooks(){
-        axios.get("http://localhost:8080/api/livro/9").then(response => {
+        axios.get("http://localhost:8080/api/livro/"+id).then(response => {
             setBooks(response.data)
+            console.log(books)
+
+        }).catch((e)=>{
+            console.log(e)
         })
     }
     
@@ -22,19 +33,20 @@ function DeleteBook(){
         }
     }
 
-    useEffect(() => { 
+    useEffect(() => {
         if(!carregou){
             searchBooks();
             setCarregou(true);
         }
-    })
+    },[books,carregou])
 
     return(
         <div className={styles.listBooks}>
-            <div>
                 {
-                    carregou && books &&(
-                        <DrawBook 
+
+                    (carregou && books) ? (
+                        <div>
+                            <DrawBook
                             image = {books.path_foto}
                             id = {books.id}
                             title = {books.titulo}
@@ -49,16 +61,17 @@ function DeleteBook(){
                             editora = {books.editora}
                             sinopse = {books.sinopse}
                             resenha = {books.resenha}
-                        />
-                    )
-                }
-                
-            </div>
-            <div className={styles.delete}>
-                <button onClick={deleteBook}>deletar</button>
+                            />
+                    <div className={styles.delete}>
+                    <button onClick={deleteBook}>deletar</button>
 
-                <button>voltar</button>
-            </div>
+                    <button>voltar</button>
+                    </div>
+                    </div>
+                    ) :
+                        <NotFoundPage/>
+
+                }
         </div>
     );
 }

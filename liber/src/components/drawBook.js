@@ -1,8 +1,11 @@
 import styles from '../styles/components/drawBook.module.css'
 
+
 export function DrawBook(props){
+    console.log(props.id)
     return(
-        <div className={styles.drawBooks}>
+
+            <div className={styles.drawBooks}>
             <div className={styles.containerImage}>
                 <img src={props.image}/>
             </div>

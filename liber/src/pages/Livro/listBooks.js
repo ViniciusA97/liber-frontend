@@ -1,7 +1,7 @@
 import { DrawBooks } from "../../components/drawBooks";
 import axios from 'axios'
 import styles from "../../styles/components/listBooks.module.css"
-import { useEffect, useState } from "react";
+import {Fragment, useEffect, useState} from "react";
 
 function ListBooks(){
     const [books, setBooks] = useState(null);
@@ -22,16 +22,22 @@ function ListBooks(){
     })
 
     return(
-        <div className={styles.listBooks}>
+        <div className={styles.listBooks} id={"root"}>
             {
                 carregou && books &&(
                     books.map((value, key) =>{
-                        return <DrawBooks key = {key}
-                            image = {value.path_foto}
-                            title = {value.titulo}
-                            author = {value.autor}
-                            genre = {value.genero}
-                        />;
+                        return (
+                            <Fragment>
+                                <DrawBooks key = {key}
+                                           id = {value.id}
+                                           image = {value.path_foto}
+                                           title = {value.titulo}
+                                           author = {value.autor}
+                                           genre = {value.genero}
+                                           onClick
+                                />
+                            </Fragment>
+                        );
                     })
                 )
             }

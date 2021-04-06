@@ -1,7 +1,9 @@
 import styles from '../styles/components/drawBooks.module.css'
+import { Link } from 'react-router-dom'
 
 export function DrawBooks(props){
     return(
+        <Link to={"/livro/"+props.id}>
         <div className={styles.drawBooks}>
             <div className={styles.containerImage}>
                 <img src={props.image}/>
@@ -16,5 +18,6 @@ export function DrawBooks(props){
                 </div>
             </div>
         </div>
+        </Link>
     );
 }
